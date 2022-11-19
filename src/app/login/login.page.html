@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <form [formGroup]="ionicForm" (ngSubmit)="submitForm()">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Número de Control</ion-label>
+            <ion-input formControlName="numerocontrol" type="text" required></ion-input>
+          </ion-item>
+          <div>
+            <ng-container *ngFor="let it of validationMessages['numerocontrol']">
+              <div class="errormessage" *ngIf="(ionicForm.get('numerocontrol').dirty || ionicForm.get('numerocontrol').touched) && ionicForm.get('numerocontrol').hasError(it.type)">
+                {{it.message}}
+              </div>
+            </ng-container>
+          </div>
+          <ion-item>
+            <ion-label position="floating">NIP</ion-label>
+            <ion-input formControlName="nip"  required></ion-input>
+          </ion-item>
+          <div>
+            <ng-container *ngFor="let it of validationMessages['nip']">
+              <div class="errormessage" *ngIf="(ionicForm.get('nip').dirty || ionicForm.get('nip').touched) && ionicForm.get('nip').hasError(it.type)">
+                {{it.message}}
+              </div>
+            </ng-container>
+          </div>
+          <!-- <ion-button type="submit" color="danger" expand="block">Ingresar</ion-button> -->
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="danger" expand="block">Ingresar</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+</ion-content>
